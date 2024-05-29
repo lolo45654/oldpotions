@@ -1,19 +1,18 @@
 plugins {
     id 'java'
-    id 'agency.highlysuspect.minivan' version '0.2'
+    id 'fabric-loom' version '1.6-SNAPSHOT'
     id 'maven-publish'
 }
 
 archivesBaseName = "${mod_name}-common-${minecraft_version}"
 
-minivan {
-    version(minecraft_version)
-}
-
 dependencies {
-     compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
-     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
-     implementation group: 'com.electronwill.night-config', name: 'toml', version: '3.6.0'
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings loom.officialMojangMappings()
+    
+    compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
+    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+    implementation group: 'com.electronwill.night-config', name: 'toml', version: '3.6.0'
 }
 
 processResources {
